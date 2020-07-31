@@ -3,6 +3,10 @@ package vendormachine.users;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -35,8 +39,13 @@ public class PersonTEST {
 	@BeforeClass
 	public static void testINITIAL() {
 		
+		Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
+		Path filePath = Paths.get(root.toString(), "\\target\\reports\\PersonReport.html");
+		
+		System.out.print(filePath.toString());
+		
 		report = new ExtentReports(
-				"C:\\Users\\MorickClive\\Desktop\\QA\\TRAINER\\Content Generation\\Demo Projects\\vendormachine\\target\\reports\\PersonReport.html",
+				filePath.toString(),
 				true);
 				
 	}
